@@ -11,6 +11,7 @@ const Filter = () => {
   const [startDate, setStartDate] = useState<string>("Enter start date")
   const [endDate, setEndDate] = useState<string>("Enter end date")
   const [transactionTypes, setTransactionTypes] = useState<any[]>([])
+  const [selection, setSelection] = useState<any[]>([])
   const [openModal, setOpenModal] = useState<boolean>(false)
 
   useEffect(() => {
@@ -25,7 +26,22 @@ const Filter = () => {
   const DropDown = () => (
     <div>
       {transactionTypes?.map((item, index) => (
-        <h5 key={index}>{item}</h5>
+        <div key={index}>
+          <input
+            type="checkbox"
+            checked={selection?.includes(item)}
+            name={item}
+            onChange={(e) => setSelection([...selection, e.target.name])}
+          />
+
+          <h5
+            onClick={() => {
+              setSelection([...selection, item])
+            }}
+          >
+            {item}
+          </h5>
+        </div>
       ))}
     </div>
   )
