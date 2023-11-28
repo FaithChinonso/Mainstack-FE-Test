@@ -5,7 +5,7 @@ import { sideNav } from "../utils"
 
 const SideNav = () => {
   return (
-    <div className="fixed shadow-light-mode-101 p-2 gap-2 items-center  rounded-full h-[192px] left-4 top-[300px]">
+    <div className="fixed shadow-light-mode-101 p-2 gap-2 items-center  rounded-full h-[192px] left-4 top-[300px] z-10 bg-white">
       {sideNav?.map((item, index) => (
         <Image
           src={item?.icon}

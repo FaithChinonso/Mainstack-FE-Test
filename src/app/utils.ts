@@ -93,3 +93,12 @@ export const stats = [
   { id: 3, figure: "USD 5,000.00", name: "Total Revenue" },
   { id: 4, figure: "USD 5,000.00", name: "Pending Payout" },
 ]
+export const duration = [
+  { id: 1, name: "Today" },
+  { id: 2, name: "Last 7 days" },
+  { id: 3, name: "This month" },
+  { id: 4, name: "Last 3 months" },
+  { id: 5, name: "This year" },
+  { id: 6, name: "Last year" },
+  { id: 7, name: "All time" },
+]

@@ -43,6 +43,11 @@ const config: Config = {
         white: "#FFFFFF",
         faintBorder: "rgba(45, 59, 67, 0.05)",
         lightGrey: "#EFF1F6",
+
+        lightGreen: "#E3FCF2",
+        lightRed: "#F9E3E0",
+        green: "#0EA163",
+        yellow: "#A77A07",
       },
     },
   },

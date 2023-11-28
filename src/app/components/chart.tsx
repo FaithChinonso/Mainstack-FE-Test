@@ -6,7 +6,8 @@ import {
 import moment from "moment"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
-import { Line, LineChart, ResponsiveContainer, XAxis } from "recharts"
+import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
+
 import { formatNumberWithComma } from "../helpers"
 import { FormattedDataType, TransactionType } from "../types"
 
@@ -17,7 +18,7 @@ const Chart = () => {
 
   const formattedData: FormattedDataType[] = transactionData?.map(
     (entry: TransactionType) => ({
-      date: moment(entry?.date, "YYYY-MM-DD").format("MMM dd, yyyy"),
+      date: moment(entry?.date, "YYYY-MM-DD").format("MMM DD, yyyy"),
       deposit: entry?.type === "deposit" ? entry?.amount : 0,
       withdrawal: entry?.type === "withdrawal" ? entry?.amount : 0,
     })
@@ -49,11 +50,23 @@ const Chart = () => {
         <LineChart data={formattedData}>
           <XAxis
             dataKey="date"
-            ticks={[firstDate, lastDate]} // Set the ticks to only include the first and last dates
-            axisLine={{ stroke: "red" }} // Set the axis line color to red
+            ticks={[firstDate, lastDate]}
+            axisLine={{ stroke: "#DBDEE5" }}
+            padding="gap"
           />
-          <Line type="monotone" dataKey="deposit" stroke="#102572" />
-          <Line type="monotone" dataKey="withdrawal" stroke="#FF5403" />
+          <YAxis hide padding={{ top: 20, bottom: 20 }} />
+          <Line
+            type="monotone"
+            dataKey="deposit"
+            stroke="#102572"
+            activeDot={false}
+          />
+          <Line
+            type="monotone"
+            dataKey="withdrawal"
+            stroke="#FF5403"
+            activeDot={false}
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>

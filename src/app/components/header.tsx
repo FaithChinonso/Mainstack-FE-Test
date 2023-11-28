@@ -20,7 +20,7 @@ const Header = () => {
   const { data, isLoading } = useGetUserDataQuery()
   console.log("first", data, isLoading)
   return (
-    <div className="fixed flex justify-between items-center shadow-light-mode-100 w-[calc([screen-32px])] border-2 border-faintBorder  border-t-0 rounded-[100px] px-6 py-4 left-4 right-4">
+    <div className="fixed flex justify-between items-center shadow-light-mode-100 w-[calc([screen-32px])] border-2 border-faintBorder  border-t-0 rounded-[100px] px-6 py-4 top-0 left-4 right-4 z-10 bg-white">
       {isLoading ? (
         <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
           <p>

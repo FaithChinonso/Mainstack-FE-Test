@@ -3,10 +3,12 @@
 import { Provider } from "react-redux"
 import { store } from "../store"
 import HomePage from "./HomePage"
+import DrawerCard from "./components/DrawerCard"
 
 export default function Home() {
   return (
     <Provider store={store}>
+      <DrawerCard />
       <main className="flex min-h-screen flex-col items-center  justify-between p-4 w-screen">
         <HomePage />
         {/* <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">

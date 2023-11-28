@@ -41,7 +41,7 @@ const Stats = () => {
     <div className="w-[271px] ">
       {stats?.map((item) => (
         <div key={item?.id} className="w-full mb-8">
-          <div className="flex justify-between">
+          <div className="flex justify-between items-center">
             <h6 className="mb-[10px] text-sm text-text font-medium">
               {item?.name}
             </h6>
