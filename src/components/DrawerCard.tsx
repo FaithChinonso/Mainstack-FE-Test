@@ -1,5 +1,5 @@
-import { uiActions } from "../../redux/features/ui-slice"
-import { useAppDispatch, useAppSelector } from "../../redux/redux-hooks"
+import { uiActions } from "../redux/features/ui-slice"
+import { useAppDispatch, useAppSelector } from "../redux/redux-hooks"
 
 export default function DrawerCard() {
   const dispatch = useAppDispatch()

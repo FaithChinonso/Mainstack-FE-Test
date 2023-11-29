@@ -6,14 +6,14 @@ import Link from "next/link"
 import { useState } from "react"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
-import Bell from "../../assets/images/icon.svg"
-import Logo from "../../assets/images/mainstack-logo.svg"
-import Menu from "../../assets/images/menu.svg"
-import Comment from "../../assets/images/small tertiary button.svg"
-import { useGetUserDataQuery } from "../../redux/services/queryApi"
-import { navList } from "../utils/data"
-import { getInitials } from "../utils/helpers"
-import { NavListItem } from "../utils/types"
+import { navList } from "../app/utils/data"
+import { getInitials } from "../app/utils/helpers"
+import { NavListItem } from "../app/utils/types"
+import Bell from "../assets/images/icon.svg"
+import Logo from "../assets/images/mainstack-logo.svg"
+import Menu from "../assets/images/menu.svg"
+import Comment from "../assets/images/small tertiary button.svg"
+import { useGetUserDataQuery } from "../redux/services/queryApi"
 
 const Header = () => {
   const [active, setActive] = useState<string>("")
@@ -39,7 +39,7 @@ const Header = () => {
   //   }
   // }, [])
   return (
-    <header className="fixed flex justify-center items-center shadow-light-mode-100 w-[calc([screen-16px])] md:w-[calc([screen-32px])] border-2 border-faintBorder  border-t-0 rounded-[100px] top-0 left-2 right-2 md:left- md:right-4 z-10 bg-white">
+    <header className=" fixed flex justify-center items-center shadow-light-mode-100 w-[calc([screen-16px])] md:w-[calc([screen-32px])] border-2 border-faintBorder  border-t-0 rounded-[100px] top-0 left-2 right-2 md:left- md:right-4 z-10 bg-white">
       <div className="2xl:max-w-[1440px] flex justify-between items-center  px-6 py-4 w-full">
         {isLoading ? (
           <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">

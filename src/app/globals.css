@@ -4,26 +4,26 @@
 
 @font-face {
   font-family: "Degular";
-  src: url("../assets//fonts//DegularDemo-Regular.otf") format("off");
+  src: url("../assets//fonts//DegularDemo-Regular.otf") format("otf");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Degular";
-  src: url("../assets//fonts//DegularDemo-Medium.otf") format("off");
+  src: url("../assets//fonts//DegularDemo-Medium.otf") format("otf");
   font-weight: medium;
   font-style: normal;
 }
 @font-face {
   font-family: "Degular";
-  src: url("../assets//fonts//DegularDemo-Semibold.otf") format("off");
+  src: url("../assets//fonts//DegularDemo-Semibold.otf") format("otf");
   font-weight: semibold;
   font-style: normal;
 }
 @font-face {
   font-family: "Degular";
-  src: url("../assets//fonts//DegularDemo-Bold.otf") format("off");
+  src: url("../assets//fonts//DegularDemo-Bold.otf") format("otf");
   font-weight: bold;
   font-style: normal;
 }
@@ -44,7 +44,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  font-family: "Degular", sans-serif;
+  font-family: "Degular", sans-serif !important;
   background: linear-gradient(
       to bottom,
       transparent,

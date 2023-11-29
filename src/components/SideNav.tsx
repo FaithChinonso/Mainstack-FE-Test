@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { sideNav } from "../utils/data"
+import { sideNav } from "../app/utils/data"
 
 const SideNav = () => {
   return (
