@@ -1,7 +1,7 @@
 import moment from "moment"
 import Image from "next/image"
 import React from "react"
-import down from "../../assets/images/expand_more (1).svg"
+import down from "../assets/images/expand_more (1).svg"
 
 const DatePicker = ({
   value,

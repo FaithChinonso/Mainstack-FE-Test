@@ -1,10 +1,10 @@
 import moment from "moment"
 import Image from "next/image"
-import Decreasing from "../../assets/images/call_made.svg"
-import Increasing from "../../assets/images/call_received.svg"
+import Decreasing from "../assets/images/call_made.svg"
+import Increasing from "../assets/images/call_received.svg"
 
-import { formatNumberWithComma, getStatusColor } from "../utils/helpers"
-import { TransactionType } from "../utils/types"
+import { formatNumberWithComma, getStatusColor } from "../app/utils/helpers"
+import { TransactionType } from "../app/utils/types"
 
 const Table = ({ data }: { data: TransactionType[] }) => {
   return (

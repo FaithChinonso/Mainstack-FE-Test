@@ -3,8 +3,8 @@ import moment from "moment"
 import "react-loading-skeleton/dist/skeleton.css"
 import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 
-import { formatNumberWithComma } from "../utils/helpers"
-import { FormattedDataType, TransactionType } from "../utils/types"
+import { formatNumberWithComma } from "../app/utils/helpers"
+import { FormattedDataType, TransactionType } from "../app/utils/types"
 
 const Chart = ({ walletData, transactionData }: any) => {
   const formattedData: FormattedDataType[] = transactionData?.map(

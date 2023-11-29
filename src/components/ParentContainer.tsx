@@ -1,7 +1,7 @@
 "use client"
 
 import { Provider } from "react-redux"
-import { store } from "../../redux/store"
+import { store } from "../redux/store"
 import DrawerCard from "./DrawerCard"
 import Header from "./Header"
 import SideNav from "./SideNav"

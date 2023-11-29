@@ -1,8 +1,8 @@
 "use client"
 import Image from "next/image"
 import "react-loading-skeleton/dist/skeleton.css"
-import info from "../../assets/images/info.svg"
-import { formatNumberWithComma } from "../utils/helpers"
+import { formatNumberWithComma } from "../app/utils/helpers"
+import info from "../assets/images/info.svg"
 
 const Stats = ({ walletData }: any) => {
   const stats = [

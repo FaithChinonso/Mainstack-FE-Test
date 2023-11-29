@@ -1,7 +1,7 @@
 import Image from "next/image"
-import Empty from "../../assets/images/empty.svg"
-import { filterActions } from "../../redux/features/filter-slice"
-import { useAppDispatch } from "../../redux/redux-hooks"
+import Empty from "../assets/images/empty.svg"
+import { filterActions } from "../redux/features/filter-slice"
+import { useAppDispatch } from "../redux/redux-hooks"
 
 const EmptyTable = () => {
   const dispatch = useAppDispatch()

@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import ParentContainer from "./components/ParentContainer"
+import ParentContainer from "../components/ParentContainer"
 import "./globals.css"
 
 const inter = Inter({ subsets: ["latin"] })
