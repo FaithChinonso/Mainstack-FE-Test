@@ -1,21 +1,12 @@
 "use client"
-import {
-  useGetTransactionDataQuery,
-  useGetWalletDataQuery,
-} from "@/services/queryApi"
 import moment from "moment"
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
 import { Line, LineChart, ResponsiveContainer, XAxis, YAxis } from "recharts"
 
-import { formatNumberWithComma } from "../helpers"
-import { FormattedDataType, TransactionType } from "../types"
+import { formatNumberWithComma } from "../utils/helpers"
+import { FormattedDataType, TransactionType } from "../utils/types"
 
-const Chart = () => {
-  const { data: walletData, isLoading } = useGetWalletDataQuery()
-  const { data: transactionData, isLoading: isTransactionLoading } =
-    useGetTransactionDataQuery()
-
+const Chart = ({ walletData, transactionData }: any) => {
   const formattedData: FormattedDataType[] = transactionData?.map(
     (entry: TransactionType) => ({
       date: moment(entry?.date, "YYYY-MM-DD").format("MMM DD, yyyy"),
@@ -25,24 +16,21 @@ const Chart = () => {
   )
   const firstDate = formattedData?.[0]?.date
   const lastDate = formattedData?.[formattedData?.length - 1].date
-  return isLoading || isTransactionLoading ? (
-    <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
-      <p>
-        <Skeleton count={1} width={871} height={350} />
-      </p>
-    </SkeletonTheme>
-  ) : (
-    <div className="w-4/5 flex flex-col ">
-      <div className="flex mb-[100px] gap-16">
+  return (
+    <div className="md:w-4/5 w-full flex flex-col  h-[350px]">
+      <div className="flex md:mb-[100px] gap-16">
         <div>
           <h5 className="text-sm font-medium text-text mb-2">
             Available Balance
           </h5>
-          <h1 className="text-4xl font-bold text-dark">
+          <h1 className="md:text-4xl text-3xl font-bold text-dark">
             USD {formatNumberWithComma(walletData?.balance)}
           </h1>
         </div>
-        <button className="cursor-pointer text-base text-white font-semibold bg-dark px-7 py-[5px] rounded-[100px]">
+        <button
+          type="button"
+          className="cursor-pointer text-base text-white font-semibold bg-dark  rounded-[24px] md:w-[167px] w-[120px] h-[50px]"
+        >
           Withdraw
         </button>
       </div>

@@ -25,3 +25,6 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+#cb1 {
+  accent-color: #131316;
+}

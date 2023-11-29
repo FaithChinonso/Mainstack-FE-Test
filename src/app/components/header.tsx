@@ -1,30 +1,49 @@
 "use client"
 
-import { useGetUserDataQuery } from "@/services/queryApi"
+import { useGetUserDataQuery } from "@/redux/services/queryApi"
 import Image from "next/image"
 import Link from "next/link"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
 import Bell from "../../assets/images/icon.svg"
 import Logo from "../../assets/images/mainstack-logo.svg"
 import Menu from "../../assets/images/menu.svg"
 import Comment from "../../assets/images/small tertiary button.svg"
-import { getInitials } from "../helpers"
-import { NavListItem } from "../types"
-import { navList } from "../utils"
+import { navList } from "../utils/data"
+import { getInitials } from "../utils/helpers"
+import { NavListItem } from "../utils/types"
 
 const Header = () => {
   const [active, setActive] = useState<string>("")
+  const [windowSize, setWindowSize] = useState<number[]>([
+    window?.innerWidth,
+    window?.innerHeight,
+  ])
+
   const { data, isLoading } = useGetUserDataQuery()
-  console.log("first", data, isLoading)
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const width = window.innerWidth
+      const height = window.innerHeight
+      setWindowSize([width, height])
+
+      console.log(width, height)
+    }
+
+    window.addEventListener("resize", handleWindowResize)
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize)
+    }
+  }, [])
   return (
-    <div className="fixed flex justify-between items-center shadow-light-mode-100 w-[calc([screen-32px])] border-2 border-faintBorder  border-t-0 rounded-[100px] px-6 py-4 top-0 left-4 right-4 z-10 bg-white">
+    <header className="fixed flex justify-between items-center shadow-light-mode-100 w-[calc([screen-16px])] md:w-[calc([screen-32px])] border-2 border-faintBorder  border-t-0 rounded-[100px] px-6 py-4 top-0 left-2 right-2 md:left- md:right-4 z-10 bg-white">
       {isLoading ? (
         <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
           <p>
-            <Skeleton count={1} width={1900} height={50} />
+            <Skeleton count={1} width={windowSize[0]} height={50} />
           </p>
         </SkeletonTheme>
       ) : (
@@ -99,7 +118,7 @@ const Header = () => {
           </div>
         </>
       )}
-    </div>
+    </header>
   )
 }
 

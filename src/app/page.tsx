@@ -1,17 +1,162 @@
 "use client"
-
-import { Provider } from "react-redux"
-import { store } from "../store"
-import HomePage from "./HomePage"
-import DrawerCard from "./components/DrawerCard"
+import { uiActions } from "@/redux/features/ui-slice"
+import {
+  useGetTransactionDataQuery,
+  useGetWalletDataQuery,
+} from "@/redux/services/queryApi"
+import { AppDispatch } from "@/redux/store"
+import Image from "next/image"
+import { useEffect, useMemo, useState } from "react"
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
+import { useDispatch, useSelector } from "react-redux"
+import download from "../assets/images/download.svg"
+import arrow from "../assets/images/expand_more.svg"
+import Chart from "./components/Chart"
+import EmptyTable from "./components/EmptyTable"
+import Filter from "./components/Filter"
+import ParentContainer from "./components/ParentContainer"
+import Stats from "./components/Stats"
+import Table from "./components/Table"
+import { TransactionType } from "./utils/types"
 
 export default function Home() {
+  const dispatch = useDispatch<AppDispatch>()
+  const [windowSize, setWindowSize] = useState([
+    window.innerWidth,
+    window.innerHeight,
+  ])
+
+  const { data: transactionData, isLoading: isTransactionLoading } =
+    useGetTransactionDataQuery()
+  const { data: walletData, isLoading } = useGetWalletDataQuery()
+
+  const { type, status, startDate, endDate, period } = useSelector(
+    (state: any) => state.filter
+  )
+  const filteredTransactions = useMemo(() => {
+    return period
+      ? transactionData?.filter((transaction: TransactionType) => {
+          return (
+            type?.includes(transaction.type) &&
+            status?.includes(transaction.status) &&
+            transaction?.date >= startDate &&
+            transaction?.date <= endDate
+          )
+        })
+      : transactionData
+  }, [period, transactionData, type, status, startDate, endDate])
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const width = window.innerWidth
+      const height = window.innerHeight
+      setWindowSize([width, height])
+
+      console.log(width, height)
+    }
+
+    window.addEventListener("resize", handleWindowResize)
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize)
+    }
+  }, [])
+  console.log("first", type, status, startDate, endDate, period)
   return (
-    <Provider store={store}>
-      <DrawerCard />
-      <main className="flex min-h-screen flex-col items-center  justify-between p-4 w-screen">
-        <HomePage />
-        {/* <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
+    <ParentContainer>
+      <div className="p-4  mt-[80px]  md:mt-[114px] md:pl-[150px] md:pr-[150px]  ">
+        <div className="flex flex-col md:flex-row justify-between gap-[80px]  md:gap-[123px]  w-full ">
+          {isTransactionLoading || isLoading ? (
+            <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
+              <p>
+                <Skeleton
+                  count={2}
+                  width={
+                    windowSize[0] > 600
+                      ? (windowSize[0] * 4) / 5
+                      : windowSize[0]
+                  }
+                  height={350}
+                />
+              </p>
+            </SkeletonTheme>
+          ) : (
+            <Chart walletData={walletData} transactionData={transactionData} />
+          )}
+          {isTransactionLoading || isLoading ? (
+            <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
+              <p>
+                <Skeleton count={5} width={271} height={350} />
+              </p>
+            </SkeletonTheme>
+          ) : (
+            <Stats walletData={walletData} />
+          )}
+        </div>
+        {isTransactionLoading ? (
+          <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
+            <p>
+              <Skeleton count={5} width={600} height={350} />
+            </p>
+          </SkeletonTheme>
+        ) : (
+          <>
+            <div className="w-full flex flex-col md:flex-row justify-between items-center gap-2 mb-6 mt-10 md:mt-[82px]">
+              <div>
+                <h2 className="text-dark font-bold text-xl md:text-2xl  ">
+                  {filteredTransactions?.length} Transactions
+                </h2>
+                {period ? (
+                  <h6 className="text-text text-sm font-medium capitalize">
+                    Your transactions for {period}
+                  </h6>
+                ) : null}
+              </div>
+              <div className="flex gap-3">
+                <div
+                  className="rounded-full bg-lightGrey px-5 py-3 flex justify-center items-center "
+                  onClick={() =>
+                    dispatch(
+                      uiActions?.openDrawerAndSetContent({
+                        drawerContent: <Filter />,
+                      })
+                    )
+                  }
+                >
+                  {filteredTransactions?.length ? (
+                    <div className="rounded-full w-5 h-5 flex items-center justify-center bg-dark mr-1">
+                      <p className="text-white text-xs">
+                        {filteredTransactions?.length}
+                      </p>
+                    </div>
+                  ) : null}
+                  <h5 className="text-dark md:text-base text-sm font-semibold mr-1">
+                    Filter
+                  </h5>
+                  <Image src={arrow} alt="down button" width={20} height={20} />
+                </div>
+                <div className="rounded-full bg-lightGrey px-5 py-3 flex justify-center items-center ">
+                  <h5 className="text-dark md:text-base text-sm font-semibold mr-1">
+                    Export list
+                  </h5>
+                  <Image
+                    src={download}
+                    alt="down button"
+                    width={20}
+                    height={20}
+                  />
+                </div>
+              </div>
+            </div>
+            {filteredTransactions?.length ? (
+              <Table data={filteredTransactions} />
+            ) : (
+              <EmptyTable />
+            )}
+          </>
+        )}
+      </div>
+      {/* <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
           <code className="font-mono font-bold">src/app/page.tsx</code>
@@ -116,7 +261,6 @@ export default function Home() {
           </p>
         </a>
       </div> */}
-      </main>
-    </Provider>
+    </ParentContainer>
   )
 }

@@ -1,13 +1,10 @@
 "use client"
-import { useGetWalletDataQuery } from "@/services/queryApi"
 import Image from "next/image"
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
 import info from "../../assets/images/info.svg"
-import { formatNumberWithComma } from "../helpers"
+import { formatNumberWithComma } from "../utils/helpers"
 
-const Stats = () => {
-  const { data: walletData, isLoading } = useGetWalletDataQuery()
+const Stats = ({ walletData }: any) => {
   const stats = [
     {
       id: 1,
@@ -31,13 +28,7 @@ const Stats = () => {
     },
   ]
 
-  return isLoading ? (
-    <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
-      <p>
-        <Skeleton count={5} width={271} height={50} />
-      </p>
-    </SkeletonTheme>
-  ) : (
+  return (
     <div className="w-[271px] ">
       {stats?.map((item) => (
         <div key={item?.id} className="w-full mb-8">

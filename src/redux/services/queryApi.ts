@@ -1,4 +1,4 @@
-import { TransactionType, UserType, WalletType } from "@/app/types"
+import { TransactionType, UserType, WalletType } from "@/app/utils/types"
 import {
   BaseQueryFn,
   FetchArgs,

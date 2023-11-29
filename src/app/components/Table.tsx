@@ -1,20 +1,16 @@
-import { useGetTransactionDataQuery } from "@/services/queryApi"
 import moment from "moment"
 import Image from "next/image"
 import Decreasing from "../../assets/images/call_made.svg"
 import Increasing from "../../assets/images/call_received.svg"
 
-import { formatNumberWithComma, getStatusColor } from "../helpers"
-import { TransactionType } from "../types"
+import { formatNumberWithComma, getStatusColor } from "../utils/helpers"
+import { TransactionType } from "../utils/types"
 
-const Table = () => {
-  const { data: transactionData, isLoading: isTransactionLoading } =
-    useGetTransactionDataQuery()
-
+const Table = ({ data }: { data: TransactionType[] }) => {
   return (
     <table className="w-full mt-8">
       <tbody>
-        {transactionData?.map((item: TransactionType, index) => {
+        {data?.map((item: TransactionType, index: any) => {
           console.log("stat", getStatusColor(item?.status).toString())
           return (
             <tr key={index} className="flex mb-6 ">

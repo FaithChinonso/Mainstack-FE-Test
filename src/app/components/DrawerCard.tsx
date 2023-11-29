@@ -1,6 +1,6 @@
-import { AppDispatch, RootState } from "@/store"
+import { AppDispatch, RootState } from "@/redux/store"
 import { useDispatch, useSelector } from "react-redux"
-import { uiActions } from "../slice/ui-slice"
+import { uiActions } from "../../redux/features/ui-slice"
 
 export default function DrawerCard() {
   const dispatch = useDispatch<AppDispatch>()
@@ -31,14 +31,15 @@ export default function DrawerCard() {
       height: "70vh",
       bottom: 0,
       maxHeight: "70vh",
-
+      borderRadius: "24px",
       position: "absolute",
     } as React.CSSProperties,
     desktop: {
       backgroundColor: "white",
-      width: 483,
+      width: 456,
       overflowY: "auto",
       height: "100vh",
+      borderRadius: "24px",
       top: 0,
       right: 0,
       position: "absolute",
@@ -64,7 +65,7 @@ export default function DrawerCard() {
             style={{
               ...drawerStyles,
             }}
-            className="absolute bg-white overflow-auto w-[95vw] md:w-[483px] h-[70vh]  max-h-[70vh] md:max-h-screen md:h-screen bottom-0 md:bottom-auto md:top-0 md:right-0"
+            className="absolute bg-white overflow-auto w-[95vw] md:w-[456px] h-[70vh] rounded-3xl  max-h-[70vh] md:max-h-screen md:h-screen bottom-0 md:bottom-auto md:top-0 md:right-0"
             onClick={(e) => {
               e.stopPropagation()
             }}
@@ -75,7 +76,7 @@ export default function DrawerCard() {
             >
               &times;
             </div>
-            <div>{drawerContent}</div>
+            <div className="w-full h-full">{drawerContent}</div>
           </div>
         </div>
       ) : (
