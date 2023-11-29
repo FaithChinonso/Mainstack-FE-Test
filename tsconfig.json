@@ -19,9 +19,8 @@
         "name": "next"
       }
     ],
-    "baseUrl": "./src",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
@@ -31,7 +30,7 @@
     ".next/types/**/*.ts",
     "jest.setup.js",
     "src/app/App.test.tsx",
-    "__tests__/Home.test.js",
+    "__tests__/index.test.js",
     "jest.config.js",
     "jest.config.mts"
   ],
