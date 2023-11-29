@@ -24,7 +24,7 @@ const Chart = ({ walletData, transactionData }: any) => {
             Available Balance
           </h5>
           <h1 className="md:text-4xl text-3xl font-bold text-dark">
-            USD {formatNumberWithComma(walletData?.balance)}
+            USD {formatNumberWithComma(walletData?.balance) || 0.0}
           </h1>
         </div>
         <button

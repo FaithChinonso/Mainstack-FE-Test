@@ -1,12 +1,11 @@
-import { AppDispatch, RootState } from "@/redux/store"
-import { useDispatch, useSelector } from "react-redux"
+import { useAppDispatch, useAppSelector } from "@/redux/redux-hooks"
 import { uiActions } from "../../redux/features/ui-slice"
 
 export default function DrawerCard() {
-  const dispatch = useDispatch<AppDispatch>()
-  const drawerOpened = useSelector((state: RootState) => state.ui.drawerOpened)
-  const drawerContent = useSelector((state: any) => state.ui.drawerContent)
-  const drawerStyles = useSelector((state: any) => state.ui.drawerStyles)
+  const dispatch = useAppDispatch()
+  const drawerOpened = useAppSelector((state) => state.ui.drawerOpened)
+  const drawerContent = useAppSelector((state: any) => state.ui.drawerContent)
+  const drawerStyles = useAppSelector((state: any) => state.ui.drawerStyles)
 
   const styles = {
     main: {

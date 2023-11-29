@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-no-undef */
 import { useGetTransactionDataQuery } from "@/redux/services/queryApi"
-import { AppDispatch } from "@/redux/store"
+
+import { useAppDispatch } from "@/redux/redux-hooks"
 import moment from "moment"
 import Image from "next/image"
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
 import down from "../../assets/images/expand_more (1).svg"
 import up from "../../assets/images/upward.svg"
 import { filterActions } from "../../redux/features/filter-slice"
@@ -14,7 +14,7 @@ import { splitArray } from "../utils/helpers"
 import CheckboxList from "./Checkbox"
 import DatePicker from "./DatePicker"
 const Filter = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const now = moment().format("YYYY-MM-DD")
 
   const { data: transactionData, isLoading: isTransactionLoading } =

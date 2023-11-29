@@ -8,22 +8,22 @@ const Stats = ({ walletData }: any) => {
   const stats = [
     {
       id: 1,
-      figure: `USD ${formatNumberWithComma(walletData?.ledger_balance)}`,
+      figure: `USD ${formatNumberWithComma(walletData?.ledger_balance) || 0.0}`,
       name: "Ledger Balance",
     },
     {
       id: 2,
-      figure: `USD ${formatNumberWithComma(walletData?.total_payout)}`,
+      figure: `USD ${formatNumberWithComma(walletData?.total_payout) || 0.0}`,
       name: "Total Payout",
     },
     {
       id: 3,
-      figure: `USD ${formatNumberWithComma(walletData?.total_revenue)}`,
+      figure: `USD ${formatNumberWithComma(walletData?.total_revenue) || 0.0}`,
       name: "Total Revenue",
     },
     {
       id: 4,
-      figure: `USD ${formatNumberWithComma(walletData?.pending_payout)}`,
+      figure: `USD ${formatNumberWithComma(walletData?.pending_payout) || 0.0}`,
       name: "Pending Payout",
     },
   ]
@@ -38,7 +38,9 @@ const Stats = ({ walletData }: any) => {
             </h6>
             <Image src={info} width={20} height={20} alt="info icon" />
           </div>
-          <h2 className="text-[28px] text-dark font-bold">{item?.figure}</h2>
+          <h2 className="text-[28px] text-dark font-bold">
+            {item?.figure || 0.0}
+          </h2>
         </div>
       ))}
     </div>

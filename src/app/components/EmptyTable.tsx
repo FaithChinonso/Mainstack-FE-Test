@@ -1,11 +1,10 @@
 import { filterActions } from "@/redux/features/filter-slice"
-import { AppDispatch } from "@/redux/store"
+import { useAppDispatch } from "@/redux/redux-hooks"
 import Image from "next/image"
-import { useDispatch } from "react-redux"
 import Empty from "../../assets/images/empty.svg"
 
 const EmptyTable = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
 
   return (
     <section className="flex  justify-center items-center ">

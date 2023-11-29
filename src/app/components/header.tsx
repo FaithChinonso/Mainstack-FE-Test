@@ -28,8 +28,6 @@ const Header = () => {
       const width = window.innerWidth
       const height = window.innerHeight
       setWindowSize([width, height])
-
-      console.log(width, height)
     }
 
     window.addEventListener("resize", handleWindowResize)
@@ -43,7 +41,7 @@ const Header = () => {
       {isLoading ? (
         <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
           <p>
-            <Skeleton count={1} width={windowSize[0]} height={50} />
+            <Skeleton count={1} width={windowSize[0] - 56} height={50} />
           </p>
         </SkeletonTheme>
       ) : (
@@ -101,9 +99,9 @@ const Header = () => {
             <div className="flex gap-2 bg-[#EFF1F6] rounded-full px-2 py-1">
               <div className="w-8 h-8 rounded-full bg-gradient-to-b from-gray-600 to-black flex items-center justify-center">
                 <h4 className="text-white text-sm font-semibold">
-                  {getInitials(data?.first_name, data?.last_name) || (
-                    <Skeleton count={2} />
-                  )}
+                  {data?.first_name
+                    ? getInitials(data?.first_name, data?.last_name)
+                    : "MN"}
                 </h4>
               </div>
               <Image

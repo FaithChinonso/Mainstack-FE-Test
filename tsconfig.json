@@ -19,8 +19,9 @@
         "name": "next"
       }
     ],
+    "baseUrl": "./src",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["*"]
     }
   },
   "include": [
@@ -28,7 +29,11 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "jest.setup.ts"
+    "jest.setup.js",
+    "src/app/App.test.tsx",
+    "__tests__/index.test.js",
+    "jest.config.js",
+    "jest.config.mts"
   ],
   "exclude": ["node_modules"]
 }

@@ -20,7 +20,7 @@ export function getStatusColor(status: any) {
     default:
       color = "#56616B"
   }
-  console.log("first")
+
   return (
     <h5
       className={`capitalize ${

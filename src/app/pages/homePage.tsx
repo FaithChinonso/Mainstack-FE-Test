@@ -1,14 +1,13 @@
 "use client"
+import { useAppDispatch, useAppSelector } from "@/redux/redux-hooks"
 import {
   useGetTransactionDataQuery,
   useGetWalletDataQuery,
 } from "@/redux/services/queryApi"
-import { AppDispatch } from "@/redux/store"
 import Image from "next/image"
 import { useMemo } from "react"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
-import { useDispatch, useSelector } from "react-redux"
 import download from "../../assets/images/download.svg"
 import arrow from "../../assets/images/expand_more.svg"
 import { uiActions } from "../../redux/features/ui-slice"
@@ -19,10 +18,10 @@ import Stats from "../components/Stats"
 import Table from "../components/Table"
 
 const HomePage = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const { data: transactionData, isLoading: isTransactionLoading } =
     useGetTransactionDataQuery()
-  const { type, status, startDate, endDate, period } = useSelector(
+  const { type, status, startDate, endDate, period } = useAppSelector(
     (state: any) => state.filter
   )
   const { data: walletData, isLoading } = useGetWalletDataQuery()
@@ -46,10 +45,6 @@ const HomePage = () => {
       : transactionData
   }, [transactionData, type, status, startDate, endDate])
 
-  //   useEffect(() => {
-
-  //   }, [])
-  console.log("first", type, status, startDate, endDate, period)
   return (
     <div className="mt-[114px]  pl-[150px] pr-[150px]">
       {isTransactionLoading || isLoading ? (

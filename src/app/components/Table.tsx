@@ -11,7 +11,6 @@ const Table = ({ data }: { data: TransactionType[] }) => {
     <table className="w-full mt-8">
       <tbody>
         {data?.map((item: TransactionType, index: any) => {
-          console.log("stat", getStatusColor(item?.status).toString())
           return (
             <tr key={index} className="flex mb-6 ">
               <td>
