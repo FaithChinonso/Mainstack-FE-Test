@@ -14,7 +14,6 @@ import arrow from "../assets/images/expand_more.svg"
 import EmptyTable from "./components/EmptyTable"
 import Filter from "./components/Filter"
 import ParentContainer from "./components/ParentContainer"
-
 import Table from "./components/Table"
 import Chart from "./components/chart"
 import Stats from "./components/stats"

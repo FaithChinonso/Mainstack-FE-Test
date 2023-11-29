@@ -17,7 +17,7 @@ const Filter = () => {
   const dispatch = useAppDispatch()
   const now = moment().format("YYYY-MM-DD")
 
-  const { data: transactionData, isLoading: isTransactionLoading } =
+  const { data: transactionData, isLoading: isTransactionLoading }: any =
     useGetTransactionDataQuery()
 
   const [startDate, setStartDate] = useState<string>(now)
@@ -32,11 +32,13 @@ const Filter = () => {
 
   useEffect(() => {
     if (transactionData) {
-      const uniqueTypes = [
-        ...new Set(transactionData?.map((item) => item?.type)),
+      const uniqueTypes: any = [
+        ...new Set(transactionData?.map((item: { type: any }) => item?.type)),
       ]
-      const uniqueStatus = [
-        ...new Set(transactionData?.map((item) => item?.status)),
+      const uniqueStatus: any = [
+        ...new Set(
+          transactionData?.map((item: { status: any }) => item?.status)
+        ),
       ]
       setTransactionTypes(uniqueTypes)
       setTransactionStatus(uniqueStatus)

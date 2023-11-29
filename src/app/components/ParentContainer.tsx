@@ -3,8 +3,8 @@
 import { store } from "@/redux/store"
 import { Provider } from "react-redux"
 import DrawerCard from "./DrawerCard"
-import Header from "./Header"
-import SideNav from "./SideNav"
+import Header from "./header"
+import SideNav from "./sideNav"
 
 const ParentContainer = ({ children }: any) => {
   return (
