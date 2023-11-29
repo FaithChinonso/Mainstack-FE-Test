@@ -32,12 +32,14 @@ const Filter = () => {
 
   useEffect(() => {
     if (transactionData) {
-      const uniqueTypes: any = [
-        ...new Set(transactionData?.map((item: { type: any }) => item?.type)),
-      ]
-      const uniqueStatus: any = [
+      const uniqueTypes: any[] = [
         ...new Set(
-          transactionData?.map((item: { status: any }) => item?.status)
+          transactionData?.map((item: { type: string }) => item?.type)
+        ),
+      ]
+      const uniqueStatus: any[] = [
+        ...new Set(
+          transactionData?.map((item: { status: string }) => item?.status)
         ),
       ]
       setTransactionTypes(uniqueTypes)
