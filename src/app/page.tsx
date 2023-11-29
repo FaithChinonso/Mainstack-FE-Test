@@ -10,12 +10,14 @@ import { useEffect, useMemo, useState } from "react"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import download from "../assets/images/download.svg"
 import arrow from "../assets/images/expand_more.svg"
-import Chart from "./components/Chart"
+
 import EmptyTable from "./components/EmptyTable"
 import Filter from "./components/Filter"
 import ParentContainer from "./components/ParentContainer"
-import Stats from "./components/Stats"
+
 import Table from "./components/Table"
+import Chart from "./components/chart"
+import Stats from "./components/stats"
 import { TransactionType } from "./utils/types"
 
 export default function Home() {
