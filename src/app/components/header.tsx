@@ -3,7 +3,6 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { useGetUserDataQuery } from "@/redux/services/queryApi"
 import { useState } from "react"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
@@ -11,6 +10,7 @@ import Bell from "../../assets/images/icon.svg"
 import Logo from "../../assets/images/mainstack-logo.svg"
 import Menu from "../../assets/images/menu.svg"
 import Comment from "../../assets/images/small tertiary button.svg"
+import { useGetUserDataQuery } from "../../redux/services/queryApi"
 import { navList } from "../utils/data"
 import { getInitials } from "../utils/helpers"
 import { NavListItem } from "../utils/types"
@@ -43,8 +43,8 @@ const Header = () => {
       <div className="2xl:max-w-[1440px] flex justify-between items-center  px-6 py-4 w-full">
         {isLoading ? (
           <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
-            <p>
-              <Skeleton count={1} width={556} height={50} />
+            <p className="w-full max-w-full overflow-hidden">
+              <Skeleton count={1} width={1256} height={50} />
             </p>
           </SkeletonTheme>
         ) : (

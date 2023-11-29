@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-no-undef */
-import { useGetTransactionDataQuery } from "@/redux/services/queryApi"
+import { useGetTransactionDataQuery } from "../../redux/services/queryApi"
 
-import { useAppDispatch } from "@/redux/redux-hooks"
 import moment from "moment"
 import Image from "next/image"
 import { useEffect, useState } from "react"
@@ -9,6 +8,7 @@ import down from "../../assets/images/expand_more (1).svg"
 import up from "../../assets/images/upward.svg"
 import { filterActions } from "../../redux/features/filter-slice"
 import { uiActions } from "../../redux/features/ui-slice"
+import { useAppDispatch } from "../../redux/redux-hooks"
 import { duration } from "../utils/data"
 import { splitArray } from "../utils/helpers"
 import CheckboxList from "./Checkbox"

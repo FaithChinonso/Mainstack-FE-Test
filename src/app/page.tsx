@@ -1,15 +1,15 @@
 "use client"
-import { uiActions } from "@/redux/features/ui-slice"
-import { useAppDispatch, useAppSelector } from "@/redux/redux-hooks"
-import {
-  useGetTransactionDataQuery,
-  useGetWalletDataQuery,
-} from "@/redux/services/queryApi"
 import Image from "next/image"
 import { useMemo } from "react"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import download from "../assets/images/download.svg"
 import arrow from "../assets/images/expand_more.svg"
+import { uiActions } from "../redux/features/ui-slice"
+import { useAppDispatch, useAppSelector } from "../redux/redux-hooks"
+import {
+  useGetTransactionDataQuery,
+  useGetWalletDataQuery,
+} from "../redux/services/queryApi"
 import EmptyTable from "./components/EmptyTable"
 import Filter from "./components/Filter"
 import ParentContainer from "./components/ParentContainer"
