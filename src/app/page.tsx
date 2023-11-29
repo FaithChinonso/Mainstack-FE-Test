@@ -6,28 +6,24 @@ import {
   useGetWalletDataQuery,
 } from "@/redux/services/queryApi"
 import Image from "next/image"
-import { useEffect, useMemo, useState } from "react"
+import { useMemo } from "react"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import download from "../assets/images/download.svg"
 import arrow from "../assets/images/expand_more.svg"
 import EmptyTable from "./components/EmptyTable"
 import Filter from "./components/Filter"
 import ParentContainer from "./components/ParentContainer"
+import Stats from "./components/Stats"
 import Table from "./components/Table"
 import Chart from "./components/chart"
-
-import Stats from "./components/Stats"
 import { TransactionType } from "./utils/types"
 
 export default function Home() {
-  if (typeof window === "undefined") {
-    return <></>
-  }
   const dispatch = useAppDispatch()
-  const [windowSize, setWindowSize] = useState([
-    window.innerWidth,
-    window.innerHeight,
-  ])
+  // const [windowSize, setWindowSize] = useState([
+  //   window.innerWidth,
+  //   window.innerHeight,
+  // ])
 
   const { data: transactionData, isLoading: isTransactionLoading } =
     useGetTransactionDataQuery()
@@ -49,21 +45,21 @@ export default function Home() {
       : transactionData
   }, [period, transactionData, type, status, startDate, endDate])
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleWindowResize = () => {
-        const width = window.innerWidth
-        const height = window.innerHeight
-        setWindowSize([width, height])
-      }
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const handleWindowResize = () => {
+  //       const width = window.innerWidth
+  //       const height = window.innerHeight
+  //       setWindowSize([width, height])
+  //     }
 
-      window.addEventListener("resize", handleWindowResize)
+  //     window.addEventListener("resize", handleWindowResize)
 
-      return () => {
-        window.removeEventListener("resize", handleWindowResize)
-      }
-    }
-  }, [])
+  //     return () => {
+  //       window.removeEventListener("resize", handleWindowResize)
+  //     }
+  //   }
+  // }, [])
 
   return (
     <ParentContainer>
@@ -72,15 +68,7 @@ export default function Home() {
           {isTransactionLoading || isLoading ? (
             <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
               <p>
-                <Skeleton
-                  count={2}
-                  width={
-                    windowSize[0] > 600
-                      ? (windowSize[0] * 4) / 5
-                      : windowSize[0]
-                  }
-                  height={350}
-                />
+                <Skeleton count={2} width={400} height={350} />
               </p>
             </SkeletonTheme>
           ) : (
@@ -99,7 +87,7 @@ export default function Home() {
         {isTransactionLoading ? (
           <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
             <p>
-              <Skeleton count={5} width={windowSize[0]} height={350} />
+              <Skeleton count={5} width={700} height={350} />
             </p>
           </SkeletonTheme>
         ) : (

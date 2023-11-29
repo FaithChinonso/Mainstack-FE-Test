@@ -1,10 +1,10 @@
 "use client"
 
-import { useGetUserDataQuery } from "@/redux/services/queryApi"
 import Image from "next/image"
 import Link from "next/link"
 
-import { useEffect, useState } from "react"
+import { useGetUserDataQuery } from "@/redux/services/queryApi"
+import { useState } from "react"
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
 import "react-loading-skeleton/dist/skeleton.css"
 import Bell from "../../assets/images/icon.svg"
@@ -17,36 +17,34 @@ import { NavListItem } from "../utils/types"
 
 const Header = () => {
   const [active, setActive] = useState<string>("")
-  if (typeof window === "undefined") {
-    return <></>
-  }
-  const [windowSize, setWindowSize] = useState<number[]>([
-    window?.innerWidth,
-    window?.innerHeight,
-  ])
-
   const { data, isLoading } = useGetUserDataQuery()
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const handleWindowResize = () => {
-        const width = window.innerWidth
-        const height = window.innerHeight
-        setWindowSize([width, height])
-      }
-      window.addEventListener("resize", handleWindowResize)
+  // const [windowSize, setWindowSize] = useState<number[]>([
+  //   window?.innerWidth,
+  //   window?.innerHeight,
+  // ])
 
-      return () => {
-        window.removeEventListener("resize", handleWindowResize)
-      }
-    }
-  }, [])
+  //
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const handleWindowResize = () => {
+  //       const width = window.innerWidth
+  //       const height = window.innerHeight
+  //       setWindowSize([width, height])
+  //     }
+  //     window.addEventListener("resize", handleWindowResize)
+
+  //     return () => {
+  //       window.removeEventListener("resize", handleWindowResize)
+  //     }
+  //   }
+  // }, [])
   return (
     <header className="fixed flex justify-center items-center shadow-light-mode-100 w-[calc([screen-16px])] md:w-[calc([screen-32px])] border-2 border-faintBorder  border-t-0 rounded-[100px] top-0 left-2 right-2 md:left- md:right-4 z-10 bg-white">
       <div className="2xl:max-w-[1440px] flex justify-between items-center  px-6 py-4 w-full">
         {isLoading ? (
           <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
             <p>
-              <Skeleton count={1} width={windowSize[0] - 56} height={50} />
+              <Skeleton count={1} width={556} height={50} />
             </p>
           </SkeletonTheme>
         ) : (
