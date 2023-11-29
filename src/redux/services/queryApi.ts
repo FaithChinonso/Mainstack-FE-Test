@@ -1,10 +1,10 @@
-import { TransactionType, UserType, WalletType } from "@/app/utils/types"
 import {
   BaseQueryFn,
   FetchArgs,
   createApi,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/dist/query/react"
+import { TransactionType, UserType, WalletType } from "../../app/utils/types"
 
 interface CustomErr {
   data: {

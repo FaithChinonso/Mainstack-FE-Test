@@ -1,4 +1,3 @@
-import { queryApi } from "@/redux/services/queryApi"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import {
   Action,
@@ -9,6 +8,7 @@ import {
 import { setupListeners } from "@reduxjs/toolkit/dist/query/react"
 import { persistReducer } from "redux-persist"
 import thunkMiddleware from "redux-thunk"
+import { queryApi } from "../redux/services/queryApi"
 import filterSlice from "./features/filter-slice"
 
 import uiSlice from "./features/ui-slice"
