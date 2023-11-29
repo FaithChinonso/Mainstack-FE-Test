@@ -37,6 +37,9 @@ const config: Config = {
         "light-mode-100": "0 2px 4px 0 rgba(45, 59, 67, 0.05)",
         "light-mode-101": "0 2px 6px 0 rgba(45, 59, 67, 0.36)",
       },
+      fontFamily: {
+        custom: ["Degular", "sans-serif"],
+      },
       colors: {
         text: "#56616B",
         dark: "#131316",

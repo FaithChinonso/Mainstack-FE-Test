@@ -39,7 +39,7 @@ const Header = () => {
   //   }
   // }, [])
   return (
-    <header className="fixed flex justify-center items-center shadow-light-mode-100 w-[calc([screen-16px])] md:w-[calc([screen-32px])] border-2 border-faintBorder  border-t-0 rounded-[100px] top-0 left-2 right-2 md:left- md:right-4 z-10 bg-white">
+    <header className=" font-custom fixed flex justify-center items-center shadow-light-mode-100 w-[calc([screen-16px])] md:w-[calc([screen-32px])] border-2 border-faintBorder  border-t-0 rounded-[100px] top-0 left-2 right-2 md:left- md:right-4 z-10 bg-white">
       <div className="2xl:max-w-[1440px] flex justify-between items-center  px-6 py-4 w-full">
         {isLoading ? (
           <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
