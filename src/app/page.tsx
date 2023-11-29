@@ -45,22 +45,6 @@ export default function Home() {
       : transactionData
   }, [period, transactionData, type, status, startDate, endDate])
 
-  // useEffect(() => {
-  //   if (typeof window !== "undefined") {
-  //     const handleWindowResize = () => {
-  //       const width = window.innerWidth
-  //       const height = window.innerHeight
-  //       setWindowSize([width, height])
-  //     }
-
-  //     window.addEventListener("resize", handleWindowResize)
-
-  //     return () => {
-  //       window.removeEventListener("resize", handleWindowResize)
-  //     }
-  //   }
-  // }, [])
-
   return (
     <ParentContainer>
       <div className="p-4 w-full  mt-[80px]  md:mt-[114px] md:pl-[150px] md:pr-[150px]  bg-white  2xl:max-w-[1440px]">

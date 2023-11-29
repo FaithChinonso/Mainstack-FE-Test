@@ -41,9 +41,7 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-.__classname_e66fe9: {
-  font-family: "Degular", sans-serif !important;
-}
+
 body {
   color: rgb(var(--foreground-rgb));
   font-family: "Degular", sans-serif !important;

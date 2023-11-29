@@ -1,6 +1,10 @@
 import type { Metadata } from "next"
-import ParentContainer from "../components/ParentContainer"
+import { Inter } from "next/font/google"
+
+import ParentContainer from "src/components/ParentContainer"
 import "./globals.css"
+
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Mainstack",
@@ -14,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         <ParentContainer>{children}</ParentContainer>
       </body>
     </html>
