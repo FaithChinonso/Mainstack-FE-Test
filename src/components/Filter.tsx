@@ -59,7 +59,7 @@ const Filter = () => {
     dispatch(uiActions?.closedrawer())
   }
   return (
-    <div className="py-5 px-6  h-full">
+    <div className="py-5 px-6  h-full overflow-y-auto">
       <div className="flex mb-6">
         <div className="font-bold text-dark text-2xl">Filter</div>
       </div>
@@ -74,7 +74,9 @@ const Filter = () => {
                 setStartDate(startDate)
                 setEndDate(endDate)
               }}
-              className="rounded-full border border-faintBorder flex items-center justify-center px-[18px] py-[10px] mr-2"
+              className={`rounded-full border border-faintBorder ${
+                period === item?.name ? "bg-faintBorder" : "bg-white"
+              } flex items-center justify-center px-[18px] py-[10px] mr-2`}
             >
               <p className="text-dark text-sm font-semibold whitespace-nowrap ">
                 {item?.name}
@@ -144,7 +146,7 @@ const Filter = () => {
           />
         ) : null}
       </div>
-      <div className="absolute flex  justify-around items-center bottom-6 right-3 left-3">
+      <div className="md:absolute flex  justify-around items-center bottom-6 mt-10  right-3 left-3">
         <button
           type="button"
           className="cursor-pointer text-base text-dark bg-white w-[198px] font-semibold border border-faintBorder px-7 py-[5px]  rounded-full hover:bg-faintBorder hover:text-text"
