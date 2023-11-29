@@ -17,8 +17,8 @@ const Chart = ({ walletData, transactionData }: any) => {
   const firstDate = formattedData?.[0]?.date
   const lastDate = formattedData?.[formattedData?.length - 1].date
   return (
-    <div className="md:w-4/5 w-full flex flex-col  h-[350px]">
-      <div className="flex md:mb-[100px] gap-16">
+    <div className="lg:w-4/5 w-full flex flex-col  h-[350px]">
+      <div className="flex lg:mb-[100px] gap-16">
         <div>
           <h5 className="text-sm font-medium text-text mb-2">
             Available Balance

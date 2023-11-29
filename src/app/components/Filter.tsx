@@ -42,7 +42,7 @@ const Filter = () => {
       setTransactionStatus(uniqueStatus)
     }
   }, [transactionData])
-  console.log("end", endDate)
+
   const applyHandler = () => {
     const data = {
       endDate,

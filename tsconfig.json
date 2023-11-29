@@ -31,7 +31,7 @@
     ".next/types/**/*.ts",
     "jest.setup.js",
     "src/app/App.test.tsx",
-    "__tests__/index.test.js",
+    "__tests__/Home.test.js",
     "jest.config.js",
     "jest.config.mts"
   ],

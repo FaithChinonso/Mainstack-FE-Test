@@ -19,6 +19,9 @@ import Table from "./components/Table"
 import { TransactionType } from "./utils/types"
 
 export default function Home() {
+  if (typeof window === "undefined") {
+    return <></>
+  }
   const dispatch = useAppDispatch()
   const [windowSize, setWindowSize] = useState([
     window.innerWidth,
@@ -46,25 +49,25 @@ export default function Home() {
   }, [period, transactionData, type, status, startDate, endDate])
 
   useEffect(() => {
-    const handleWindowResize = () => {
-      const width = window.innerWidth
-      const height = window.innerHeight
-      setWindowSize([width, height])
+    if (typeof window !== "undefined") {
+      const handleWindowResize = () => {
+        const width = window.innerWidth
+        const height = window.innerHeight
+        setWindowSize([width, height])
+      }
 
-      console.log(width, height)
-    }
+      window.addEventListener("resize", handleWindowResize)
 
-    window.addEventListener("resize", handleWindowResize)
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize)
+      return () => {
+        window.removeEventListener("resize", handleWindowResize)
+      }
     }
   }, [])
-  console.log("first", type, status, startDate, endDate, period)
+
   return (
     <ParentContainer>
-      <div className="p-4  mt-[80px]  md:mt-[114px] md:pl-[150px] md:pr-[150px]  ">
-        <div className="flex flex-col md:flex-row justify-between gap-[80px]  md:gap-[123px]  w-full ">
+      <div className="p-4 w-full  mt-[80px]  md:mt-[114px] md:pl-[150px] md:pr-[150px]  bg-white  2xl:max-w-[1440px]">
+        <div className="flex flex-col lg:flex-row justify-between gap-[80px]  lg:gap-[123px]  w-full ">
           {isTransactionLoading || isLoading ? (
             <SkeletonTheme baseColor="#fff" highlightColor="#d7d7d7">
               <p>
