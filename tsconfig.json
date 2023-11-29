@@ -7,7 +7,6 @@
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "downlevelIteration": true,
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
@@ -23,16 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "jest.setup.js",
-    "src/app/App.test.tsx",
-    "__tests__/index.test.js",
-    "jest.config.js",
-    "jest.config.mts"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
